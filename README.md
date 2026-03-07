@@ -32,6 +32,16 @@ uvicorn app.main:app --reload --port 8000
 
 Open: <http://localhost:8000>
 
+## OpenAI (optional)
+
+To enable ChatGPT-enhanced replies, set your API key as an environment variable (never hardcode it in code or HTML):
+
+```bash
+export OPENAI_API_KEY="your_key_here"
+```
+
+The app will still work without this key and will fall back to the built-in response formatting.
+
 ## API
 
 ### `POST /api/chat`

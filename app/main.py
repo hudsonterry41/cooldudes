@@ -15,6 +15,7 @@ from app.agent import (
     extract_request_text,
     tokenize_request_terms,
 )
+from app.llm import generate_chatgpt_reply
 from app.providers import fetch_nearby_places, find_related_website_item, geocode_location
 
 app = FastAPI(title="Closest Company AI Agent")
@@ -100,6 +101,19 @@ async def chat(payload: ChatRequest) -> dict:
             f"Best option: {best['name']} is about {best['distance_km']} km away in {resolved_location}. "
             f"Address: {best['address']}.{website_note}"
         )
+
+        try:
+            llm_reply = await generate_chatgpt_reply(
+                user_message=message,
+                intent=intent.name,
+                location=resolved_location,
+                company=best,
+                website_item=website_item,
+            )
+            if llm_reply:
+                reply = llm_reply
+        except httpx.HTTPError:
+            pass
         return {
             "reply": reply,
             "intent": intent.name,
