@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diamond Legends</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Orbitron:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="stadium-glow"></div>
+    <main class="app">
+      <section class="scoreboard" aria-label="Baseball scoreboard">
+        <div class="team away">
+          <h2>Sharks</h2>
+          <p class="record">Away</p>
+        </div>
+        <div class="innings" id="innings"></div>
+        <div class="team home">
+          <h2>Falcons</h2>
+          <p class="record">Home</p>
+        </div>
+        <div class="meta">
+          <div><span>Inning</span><strong id="inningDisplay">1 ▲</strong></div>
+          <div><span>Count</span><strong id="countDisplay">0-0</strong></div>
+          <div><span>Outs</span><strong id="outsDisplay">0</strong></div>
+        </div>
+      </section>
+
+      <section class="broadcast">
+        <div class="field-wrap" id="fieldCard">
+          <div class="stadium-3d">
+            <div class="stands"></div>
+            <div class="field-floor">
+              <svg viewBox="0 0 500 420" class="field" role="img" aria-label="Baseball field">
+                <defs>
+                  <radialGradient id="grass" cx="50%" cy="55%" r="62%">
+                    <stop offset="0%" stop-color="#45ad5e" />
+                    <stop offset="100%" stop-color="#2f8f49" />
+                  </radialGradient>
+                  <radialGradient id="dirt" cx="50%" cy="55%" r="55%">
+                    <stop offset="0%" stop-color="#cf9962" />
+                    <stop offset="100%" stop-color="#b47842" />
+                  </radialGradient>
+                </defs>
+                <rect x="0" y="0" width="500" height="420" fill="url(#grass)" />
+                <path d="M250 360 L95 205 L250 50 L405 205 Z" fill="url(#dirt)" opacity="0.95" />
+                <path d="M250 340 L110 205 L250 70 L390 205 Z" fill="#2f8f49" />
+                <path d="M250 360 L95 205" stroke="#fff" stroke-width="3" />
+                <path d="M250 360 L405 205" stroke="#fff" stroke-width="3" />
+                <path d="M95 205 L250 50 L405 205" stroke="#fff" stroke-width="2" fill="none" opacity="0.85" />
+                <rect x="244" y="354" width="12" height="12" transform="rotate(45 250 360)" fill="#fff" />
+                <rect x="88" y="198" width="14" height="14" transform="rotate(45 95 205)" fill="#fff" />
+                <rect x="243" y="43" width="14" height="14" transform="rotate(45 250 50)" fill="#fff" />
+                <rect x="398" y="198" width="14" height="14" transform="rotate(45 405 205)" fill="#fff" />
+                <circle cx="250" cy="205" r="24" fill="#c08852" />
+                <circle cx="250" cy="205" r="6" fill="#fff" />
+                <circle id="ball" cx="250" cy="200" r="4" fill="#fff" />
+              </svg>
+            </div>
+            <div class="plate-shadow"></div>
+          </div>
+          <div id="eventFeed" class="event-feed">Welcome to Diamond Legends. First pitch coming up.</div>
+        </div>
+
+        <aside class="hud">
+          <div class="diamond" aria-label="Base runners">
+            <div class="base" data-base="2"></div>
+            <div class="base" data-base="3"></div>
+            <div class="base" data-base="1"></div>
+          </div>
+          <div class="zone-wrap">
+            <h3>Pitch Zone</h3>
+            <div class="zone" id="zone"></div>
+          </div>
+          <div class="controls">
+            <button id="takeBtn">Take Pitch</button>
+            <button id="swingBtn" class="accent">Swing</button>
+            <button id="powerBtn">Power Swing</button>
+            <button id="resetBtn" class="ghost">New Game</button>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
